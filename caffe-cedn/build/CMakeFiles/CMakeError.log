@@ -1,0 +1,53 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1219377915/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1219377915.dir/build.make CMakeFiles/cmTryCompileExec1219377915.dir/build
+make[1]: Entering directory `/home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1219377915.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1219377915.dir/CheckSymbolExists.c.o   -c /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1219377915
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1219377915.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1219377915.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1219377915 -rdynamic 
+CMakeFiles/cmTryCompileExec1219377915.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: Leaving directory `/home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec1219377915] Error 1
+make: *** [cmTryCompileExec1219377915/fast] Error 2
+
+File /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec817360504/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec817360504.dir/build.make CMakeFiles/cmTryCompileExec817360504.dir/build
+make[1]: Entering directory `/home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec817360504.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec817360504.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec817360504
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec817360504.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec817360504.dir/CheckFunctionExists.c.o  -o cmTryCompileExec817360504 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: Leaving directory `/home/xiang/ws/dl/deepRotator/caffe-cedn/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec817360504] Error 1
+make: *** [cmTryCompileExec817360504/fast] Error 2
+
+
