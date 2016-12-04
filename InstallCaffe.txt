@@ -1,0 +1,71 @@
+# check compiler
+sudo apt-get update
+sudo rm /usr/bin/gcc
+
+sudo rm /usr/bin/g++
+sudo ln -s /usr/bin/gcc-4.6 /usr/bin/gcc
+sudo ln -s /usr/bin/g++-4.6 /usr/bin/g++
+# Check
+gcc -v
+sudo apt-get install libatlas-base-dev
+
+# install cuda
+# http://www.r-tutor.com/gpu-computing/cuda-installation/cuda6.5-ubuntu
+sudo dpkg -i cuda-repo-ubuntu1404_6.5-14_amd64.deb 
+sudo add-apt-repository ppa:xorg-edgers/ppa
+sudo apt-get update
+sudo apt-get install cuda
+
+# reboot
+
+# install opencv
+http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+# https://help.ubuntu.com/community/OpenCV
+# chmod +x opencv.sh
+# ./opencv.sh
+
+sudo apt-get install checkinstall
+sudo apt-get install cmake
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+# python libraries and else
+sudo apt-get install python-dev python-numpy libtb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+
+# ATLAS for BLAS 
+sudo apt-get install libatlas-base-dev
+
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler
+
+# glog, gflags, protobuf, leveldb, snappy, hdf5, lmdb
+sudo apt-get install libhdf5-serial-dev
+
+mkdir deeplearning
+git clone https://github.com/rbgirshick/rcnn.git
+cd rcnn
+cd external
+git clone https://github.com/BVLC/caffe.git
+cd caffe
+mkdir build
+mv Makefile.config.example Makefile.config
+vi Makefile.config
+cd build
+cmake ..
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev
+cmake ..
+make all
+make runtest
+
+# install other dependencies
+cd ..
+cd python
+for req in $(cat requirements.txt); do sudo pip install $req; done
+# Compilation (verify if path is set in Makefile.config)
+make pycaffe
+make matcaffe
+# in the root folder. make test; make mattest
+
+
+# make runtest common error: 
+# "[syncedmen.cpp57] Check failed:error ==cudaSuccess (73 vs.0) an illegal instruction was encountered"或者“Check failed:error ==cudaSuccess (4 vs.0) unspecified launch failure”
+# solution: in Makefiile.config, keep -gencode arch=compute_20,code=sm_20 \ but remove the following similar lines. Then make clean and make again.
+
